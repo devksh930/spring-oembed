@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import me.devksh930.oembed.dto.OembedProviderDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/oembed")
 @RequiredArgsConstructor
-public class OembedContorller {
+public class OembedController {
     private final OembedProviderService oembedProviderService;
     private final OembedService oembedService;
 
@@ -22,9 +21,4 @@ public class OembedContorller {
         return ombed;
     }
 
-    @GetMapping
-    public String oembed(@RequestParam("url") String url) {
-
-        return url;
-    }
 }
