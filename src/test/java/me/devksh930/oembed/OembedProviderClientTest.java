@@ -32,12 +32,10 @@ class OembedProviderClientTest {
     void getProviderList() {
 
         mockRestServiceServer.expect(requestTo(OEMBED_PROIVDER_URL))
-                .andRespond(withSuccess(new ClassPathResource("/test.json"), MediaType.APPLICATION_JSON));
+                .andRespond(withSuccess(new ClassPathResource("/test.json"), MediaType.TEXT_PLAIN));
 
         List<OembedProviderDto> provider = oembedProviderClient.getProvider();
         OembedProviderDto oembedProviderDto = provider.get(0);
-
-
         assertNotNull(oembedProviderDto.getProviderName());
         assertNotNull(oembedProviderDto.getProviderUrl());
         assertNotNull(oembedProviderDto.getEndpoints());

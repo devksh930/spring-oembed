@@ -1,0 +1,5 @@
+oembed:
+  instagram:
+    accessToken: "appId|accessToken"
+  facebook:
+    accessToken: "appId|accessToken"

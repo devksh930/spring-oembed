@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class OembedProviderClient {
@@ -34,9 +35,7 @@ public class OembedProviderClient {
         final HttpEntity<?> entity = new HttpEntity<>(headers);
 
         ResponseEntity<OembedProviderDto[]> exchange = restTemplate.exchange(OEMBED_PROIVDER_URL, HttpMethod.GET, entity, OembedProviderDto[].class);
-        List<OembedProviderDto> oembedProviderDtos = new ArrayList<OembedProviderDto>(Arrays.asList(exchange.getBody()));
-
-        return oembedProviderDtos;
+        return new ArrayList<>(Arrays.asList(Objects.requireNonNull(exchange.getBody())));
     }
 
 }
