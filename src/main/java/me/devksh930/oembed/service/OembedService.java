@@ -14,6 +14,6 @@ public class OembedService {
 
     public OembedDto getOembedResource(String url) {
         EndpointsDto byUrlPathMatching = oembedProviderService.findByUrlPathMatching(url);
-        return oembedClient.getOembedResource(url, byUrlPathMatching);
+        return oembedClient.getOembedResource(url, byUrlPathMatching.getUrl());
     }
 }

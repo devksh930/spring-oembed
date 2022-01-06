@@ -3,6 +3,7 @@ package me.devksh930.oembed.service;
 import me.devksh930.oembed.client.OembedProviderClient;
 import me.devksh930.oembed.dto.EndpointsDto;
 import me.devksh930.oembed.dto.OembedProviderDto;
+import me.devksh930.oembed.exception.ProviderNotMatchingException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
 
@@ -29,17 +30,16 @@ public class OembedProviderService {
                 .collect(Collectors.toList());
 
     }
-
     public EndpointsDto findByUrlPathMatching(final String url) {
 
         Optional<EndpointsDto> first = this.findAllEndPoint().stream()
                 .filter(s -> s
                         .getSchemes()
                         .stream()
-                        .anyMatch(a -> antPathMatcher.match(a, url))
+                        .anyMatch(a -> antPathMatcher.match(a, url)||url.contains(a))
                 ).findFirst();
 
-        return first.orElseThrow(() -> new RuntimeException("없음"));
+        return first.orElseThrow(() -> new ProviderNotMatchingException("URL을 잘못 입력했거나 지원하지 않는 URL입니다"));
     }
 
 }

@@ -1,8 +1,7 @@
 package me.devksh930.oembed.client;
 
-import me.devksh930.oembed.dto.EndpointsDto;
+import lombok.RequiredArgsConstructor;
 import me.devksh930.oembed.dto.OembedDto;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,14 +11,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @Service
+@RequiredArgsConstructor
 public class OembedClient {
 
 
     private final RestTemplate restTemplate;
 
-    public OembedClient(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
-    }
 
     private RequestEntity<Void> requestEntity(URI uri) {
         return RequestEntity
@@ -27,8 +24,8 @@ public class OembedClient {
                 .build();
     }
 
-    public OembedDto getOembedResource(String url, EndpointsDto byUrlPathMatching) {
-        URI reqeustURL = UriComponentsBuilder.fromHttpUrl(byUrlPathMatching.getUrl())
+    public OembedDto getOembedResource(String url, String apiUrl) {
+        URI reqeustURL = UriComponentsBuilder.fromHttpUrl(apiUrl)
                 .queryParam("format", "json")
                 .queryParam("url", url).encode().build().toUri();
 
