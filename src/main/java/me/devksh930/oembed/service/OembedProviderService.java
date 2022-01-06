@@ -1,5 +1,6 @@
-package me.devksh930.oembed;
+package me.devksh930.oembed.service;
 
+import me.devksh930.oembed.client.OembedProviderClient;
 import me.devksh930.oembed.dto.EndpointsDto;
 import me.devksh930.oembed.dto.OembedProviderDto;
 import org.springframework.stereotype.Service;

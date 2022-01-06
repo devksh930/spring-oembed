@@ -1,5 +1,6 @@
-package me.devksh930.oembed;
+package me.devksh930.oembed.client;
 
+import me.devksh930.oembed.client.OembedProviderClient;
 import me.devksh930.oembed.dto.OembedProviderDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

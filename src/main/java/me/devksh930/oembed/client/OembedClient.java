@@ -1,4 +1,4 @@
-package me.devksh930.oembed;
+package me.devksh930.oembed.client;
 
 import me.devksh930.oembed.dto.EndpointsDto;
 import me.devksh930.oembed.dto.OembedDto;

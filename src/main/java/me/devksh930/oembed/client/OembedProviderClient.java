@@ -1,4 +1,4 @@
-package me.devksh930.oembed;
+package me.devksh930.oembed.client;
 
 import me.devksh930.oembed.dto.OembedProviderDto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
