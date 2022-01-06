@@ -10,9 +10,14 @@ import java.util.List;
 @NoArgsConstructor
 public class EndpointsDto {
 
-    private List<String> schemes=new ArrayList<>();
+    private List<String> schemes = new ArrayList<>();
 
     private String url;
 
     private boolean discovery;
+
+    public String getUrl() {
+        this.url = url.replaceAll("\\{format}", "json");
+        return url;
+    }
 }

@@ -26,6 +26,7 @@ public class OembedProviderService {
                 .map(OembedProviderDto::getEndpoints)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
+
     }
 
     public EndpointsDto findByUrlPathMatching(final String url) {
@@ -36,6 +37,7 @@ public class OembedProviderService {
                         .stream()
                         .anyMatch(a -> antPathMatcher.match(a, url))
                 ).findFirst();
+
         return first.orElseThrow(() -> new RuntimeException("없음"));
     }
 

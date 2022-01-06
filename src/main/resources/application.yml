@@ -1,5 +1,5 @@
 oembed:
-  instagram:
+  - provideName: "instagram"
     accessToken: "appId|accessToken"
-  facebook:
+  - providerName: "facebook"
     accessToken: "appId|accessToken"
