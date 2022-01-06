@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -17,7 +18,7 @@ public class OembedProviderDto {
     @JsonProperty("provider_url")
     private String providerUrl;
 
-    private List<EndpointsDto> endpoints;
+    private List<EndpointsDto> endpoints=new ArrayList<>();
 
     public String getProviderName() {
         return providerName.toLowerCase(Locale.ROOT);
