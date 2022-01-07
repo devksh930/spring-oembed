@@ -1,13 +1,15 @@
-package me.devksh930.oembed;
+package me.devksh930.oembed.client;
 
 import me.devksh930.oembed.dto.OembedProviderDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest(OembedProviderClient.class)
+@AutoConfigureWebClient(registerRestTemplate = true)
 class OembedProviderClientTest {
 
 
@@ -36,6 +39,7 @@ class OembedProviderClientTest {
 
         List<OembedProviderDto> provider = oembedProviderClient.getProvider();
         OembedProviderDto oembedProviderDto = provider.get(0);
+
         assertNotNull(oembedProviderDto.getProviderName());
         assertNotNull(oembedProviderDto.getProviderUrl());
         assertNotNull(oembedProviderDto.getEndpoints());

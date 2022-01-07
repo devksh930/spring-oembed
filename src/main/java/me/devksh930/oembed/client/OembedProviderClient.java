@@ -1,7 +1,8 @@
-package me.devksh930.oembed;
+package me.devksh930.oembed.client;
 
+import lombok.RequiredArgsConstructor;
 import me.devksh930.oembed.dto.OembedProviderDto;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Service;
@@ -13,15 +14,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class OembedProviderClient {
 
     private final RestTemplate restTemplate;
 
-    private static final String OEMBED_PROIVDER_URL = "https://oembed.com/providers.json";
-
-    public OembedProviderClient(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
-    }
+    @Value("${oembed.providerListUrl}")
+    private String OEMBED_PROIVDER_URL;
 
     public List<OembedProviderDto> getProvider() {
 

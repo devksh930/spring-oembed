@@ -1,5 +1,14 @@
 oembed:
+  providerListUrl: "https://oembed.com/providers.json"
   instagram:
-    accessToken: "appId|accessToken"
+    accessToken: "appID|accessToken"
   facebook:
     accessToken: "appId|accessToken"
+
+logging:
+  level:
+    root: info
+    me:
+      devksh930:
+        oembed:
+          contorller: debug
