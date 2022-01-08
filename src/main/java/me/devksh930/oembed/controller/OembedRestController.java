@@ -2,7 +2,6 @@ package me.devksh930.oembed.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.devksh930.oembed.dto.EndpointsDto;
-import me.devksh930.oembed.dto.OembedDto;
 import me.devksh930.oembed.service.OembedProviderService;
 import me.devksh930.oembed.service.OembedService;
 import org.springframework.http.HttpStatus;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -27,8 +27,8 @@ public class OembedRestController {
     }
 
     @GetMapping
-    public ResponseEntity<OembedDto> getOembedResource(@RequestParam("url") String url) {
-        OembedDto oembedResource = oembedService.getOembedResource(url.trim());
+    public ResponseEntity<HashMap<String, Object>> getOembedResource(@RequestParam("url") String url) {
+        HashMap<String, Object> oembedResource = (HashMap<String, Object>) oembedService.getOembedResource(url.trim());
         return new ResponseEntity<>(oembedResource, HttpStatus.OK);
     }
 

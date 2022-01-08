@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ class OembedProviderClientTest {
     void getProviderList() {
 
         mockRestServiceServer.expect(requestTo(OEMBED_PROIVDER_URL))
-                .andRespond(withSuccess(new ClassPathResource("/test.json"), MediaType.TEXT_PLAIN));
+                .andRespond(withSuccess(new ClassPathResource("providerList.json"), MediaType.TEXT_PLAIN));
 
         List<OembedProviderDto> provider = oembedProviderClient.getProvider();
         OembedProviderDto oembedProviderDto = provider.get(0);
