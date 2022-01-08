@@ -7,7 +7,7 @@ oembed:
 
 logging:
   level:
-    root: info
+    root: debug
     me:
       devksh930:
         oembed:
