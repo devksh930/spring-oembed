@@ -33,6 +33,7 @@ class OembedClientTest {
         return UriComponentsBuilder
                 .fromHttpUrl(OEMBED_API_URL)
                 .queryParam("url", OEMBED_RESOURCE_URL)
+                .queryParam("format","json")
                 .encode().build().toUriString();
     }
 
