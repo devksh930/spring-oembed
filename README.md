@@ -19,3 +19,9 @@
 ```shell
 ./graldew bootJar
 ```
+
+## 실행후
+```
+http://lcoalhost:8080
+```
+접속을 하면 해당 서비스를 테스트할수 있습니다.

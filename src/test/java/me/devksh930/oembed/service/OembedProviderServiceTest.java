@@ -3,6 +3,7 @@ package me.devksh930.oembed.service;
 import me.devksh930.oembed.client.OembedProviderClient;
 import me.devksh930.oembed.dto.EndpointsDto;
 import me.devksh930.oembed.dto.OembedProviderDto;
+import me.devksh930.oembed.exception.ProviderNotMatchingException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -65,13 +66,13 @@ class OembedProviderServiceTest {
     }
 
     @Test
-    @DisplayName("url로 패턴이 매칭된 Endpoint객체를 가져온다-실패")
+    @DisplayName("실패-url로 패턴이 매칭된 Endpoint객체를 가져온다")
     void findByUrlPathMatching_fail() {
         Mockito.when(oembedProviderClient.getProvider()).then(invocation -> {
             return mokingJson();
         });
 
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ProviderNotMatchingException.class, () -> {
             oembedProviderService.findByUrlPathMatching("");
         });
     }
