@@ -3,6 +3,7 @@ package me.devksh930.oembed.client;
 import lombok.RequiredArgsConstructor;
 import me.devksh930.oembed.dto.OembedProviderDto;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.*;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class OembedProviderClient {
     @Value("${oembed.providerListUrl}")
     private String OEMBED_PROVIDER_URL;
 
-
+    @Cacheable(cacheNames = "allEndPoint")
     public List<OembedProviderDto> getProvider() {
 
         restTemplate.getInterceptors().add((request, body, execution) -> {

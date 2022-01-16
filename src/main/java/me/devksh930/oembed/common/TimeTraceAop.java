@@ -14,14 +14,14 @@ public class TimeTraceAop {
     @Around("execution(* me.devksh930.oembed..*(..))")
     public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
-        log.debug("Start: " + joinPoint.toString());
+        log.info("Start: " + joinPoint.toString());
         try {
 
             return joinPoint.proceed();
         } finally {
             long finish = System.currentTimeMillis();
             long timeMs = finish - start;
-            log.debug("End: " + joinPoint.toString() + " " + timeMs + "ms");
+            log.info("End: " + joinPoint.toString() + " " + timeMs + "ms");
         }
     }
 }
