@@ -7,8 +7,8 @@ oembed:
 
 logging:
   level:
-    root: debug
+    root: info
     me:
       devksh930:
         oembed:
-          contorller: debug
+          contorller: info

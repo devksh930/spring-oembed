@@ -24,7 +24,7 @@ public class CacheConfig {
     }
 
     @CacheEvict(allEntries = true, value = {PROVIDER_ENDPOINT_LIST})
-    @Scheduled(fixedDelay = 3 * 60 * 1000, initialDelay = 3000)
+    @Scheduled(fixedDelay = 3 * 60 * 60 * 1000, initialDelay = 3000)
     public void cacheEvict() {
         log.debug("캐쉬 삭제");
     }
