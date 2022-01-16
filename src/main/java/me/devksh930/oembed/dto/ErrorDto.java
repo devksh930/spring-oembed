@@ -9,4 +9,12 @@ public class ErrorDto {
     private String errorMessage;
     @JsonProperty("status_code")
     private String statusCode;
+
+
+    public static ErrorDto exceptionToErrorDto(String errorMessage, String statusCode) {
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setErrorMessage(errorMessage);
+        errorDto.setStatusCode(statusCode);
+        return errorDto;
+    }
 }

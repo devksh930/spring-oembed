@@ -41,7 +41,7 @@ class OembedProviderServiceTest {
     }
 
     @Test
-    @DisplayName("url로 패턴이 매칭된 Endpoint객체를 가져온다")
+    @DisplayName("성공 : url로 패턴이 매칭된 Endpoint객체를 가져온다")
     void findByUrlPathMatching() {
 
         Mockito.when(oembedProviderClient.getProvider()).then(invocation -> {
@@ -55,7 +55,7 @@ class OembedProviderServiceTest {
     }
 
     @Test
-    @DisplayName("Oembed의 모든 Endpoint를 가져온다")
+    @DisplayName("성공 : Oembed의 모든 Endpoint를 가져온다")
     void findAllEndPoint() {
         Mockito.when(oembedProviderClient.getProvider()).then(invocation -> {
             return mokingJson();
@@ -66,7 +66,7 @@ class OembedProviderServiceTest {
     }
 
     @Test
-    @DisplayName("실패-url로 패턴이 매칭된 Endpoint객체를 가져온다")
+    @DisplayName("실패 : url로 패턴이 매칭된 Endpoint객체를 가져온다")
     void findByUrlPathMatching_fail() {
         Mockito.when(oembedProviderClient.getProvider()).then(invocation -> {
             return mokingJson();

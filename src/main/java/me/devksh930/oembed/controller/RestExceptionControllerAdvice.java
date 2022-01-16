@@ -17,33 +17,27 @@ public class RestExceptionControllerAdvice extends ResponseEntityExceptionHandle
 
     @ExceptionHandler(value = HttpClientErrorException.class)
     ResponseEntity<ErrorDto> handleHttpClientErrorException(HttpClientErrorException e) {
-        return new ResponseEntity<>(exceptionToErrorDto(e.getMessage(), e.getStatusCode().toString()), e.getStatusCode());
+        return new ResponseEntity<>(ErrorDto.exceptionToErrorDto(e.getMessage(), e.getStatusCode().toString()), e.getStatusCode());
     }
 
     @ExceptionHandler(value = ProviderNotMatchingException.class)
     ResponseEntity<ErrorDto> handleNotMatchingException(ProviderNotMatchingException e) {
-        return new ResponseEntity<>(exceptionToErrorDto(e.getMessage(), HttpStatus.BAD_REQUEST.toString()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ErrorDto.exceptionToErrorDto(e.getMessage(), HttpStatus.BAD_REQUEST.toString()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = ClientForbiddenException.class)
     ResponseEntity<ErrorDto> handleClientForbiddenException(ClientForbiddenException e) {
-        return new ResponseEntity<>(exceptionToErrorDto(e.getMessage(), HttpStatus.FORBIDDEN.toString()), HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(ErrorDto.exceptionToErrorDto(e.getMessage(), HttpStatus.FORBIDDEN.toString()), HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(value = ClientException.class)
     ResponseEntity<ErrorDto> handleClientException(ClientException e) {
-        return new ResponseEntity<>(exceptionToErrorDto(e.getMessage(), HttpStatus.BAD_REQUEST.toString()), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ErrorDto.exceptionToErrorDto(e.getMessage(), HttpStatus.BAD_REQUEST.toString()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = ServerException.class)
     ResponseEntity<ErrorDto> handleServerException(ServerException e) {
-        return new ResponseEntity<>(exceptionToErrorDto(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.toString()), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ErrorDto.exceptionToErrorDto(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.toString()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    public ErrorDto exceptionToErrorDto(String errorMessage, String statusCode) {
-        ErrorDto errorDto = new ErrorDto();
-        errorDto.setErrorMessage(errorMessage);
-        errorDto.setStatusCode(statusCode);
-        return errorDto;
-    }
 }
