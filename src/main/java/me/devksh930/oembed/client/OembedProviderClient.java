@@ -20,7 +20,8 @@ public class OembedProviderClient {
     private final RestTemplate restTemplate;
 
     @Value("${oembed.providerListUrl}")
-    private String OEMBED_PROIVDER_URL;
+    private String OEMBED_PROVIDER_URL;
+
 
     public List<OembedProviderDto> getProvider() {
 
@@ -33,7 +34,7 @@ public class OembedProviderClient {
         final HttpHeaders headers = new HttpHeaders();
         final HttpEntity<?> entity = new HttpEntity<>(headers);
 
-        ResponseEntity<OembedProviderDto[]> exchange = restTemplate.exchange(OEMBED_PROIVDER_URL, HttpMethod.GET, entity, OembedProviderDto[].class);
+        ResponseEntity<OembedProviderDto[]> exchange = restTemplate.exchange(OEMBED_PROVIDER_URL, HttpMethod.GET, entity, OembedProviderDto[].class);
         return new ArrayList<>(Arrays.asList(Objects.requireNonNull(exchange.getBody())));
     }
 

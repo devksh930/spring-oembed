@@ -3,7 +3,6 @@ package me.devksh930.oembed.client;
 import lombok.RequiredArgsConstructor;
 import me.devksh930.oembed.exception.ClientForbiddenException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -53,8 +51,7 @@ public class OembedClient {
 
     public Map<String, Object> getOembedResource(String url, String apiUrl) {
 
-        ResponseEntity<HashMap<String, Object>> exchange = restTemplate.exchange(requestEntity(makeUri(url, apiUrl)), new ParameterizedTypeReference<>() {
-        });
+        ResponseEntity<Map> exchange = restTemplate.exchange(requestEntity(makeUri(url, apiUrl)), Map.class);
         return exchange.getBody();
     }
 

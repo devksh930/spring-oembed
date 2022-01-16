@@ -38,7 +38,7 @@ class OembedClientTest {
     }
 
     @Test
-    @DisplayName("oEmbed리소스를 가져온다")
+    @DisplayName("성공 : oEmbed리소스를 가져온다")
     void getOembedResource() {
 
         mockRestServiceServer.expect(requestTo(mockApiUrl()))

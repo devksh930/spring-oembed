@@ -21,7 +21,6 @@ public class OembedProviderService {
         this.oembedProviderClient = oembedProviderClient;
         this.antPathMatcher = new AntPathMatcher();
     }
-
     public List<EndpointsDto> findAllEndPoint() {
 
         return oembedProviderClient.getProvider().stream()

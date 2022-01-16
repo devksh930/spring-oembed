@@ -41,7 +41,7 @@ class OembedRestControllerTest {
     }
 
     @Test
-    @DisplayName("youtube : oEbmed리소스를 가져온다")
+    @DisplayName("성공 : youtube : oEbmed리소스를 가져온다")
     void getOembedResource_youtube() throws Exception {
         mvc.perform(get("/oembeds")
                         .queryParam("url", "https://www.youtube.com/watch?v=dBD54EZIrZo")
@@ -52,7 +52,7 @@ class OembedRestControllerTest {
     }
 
     @Test
-    @DisplayName("vimeo : oEbmed리소스를 가져온다")
+    @DisplayName("성공 : vimeo : oEbmed리소스를 가져온다")
     void getOembedResource_vimeo() throws Exception {
         mvc.perform(get("/oembeds")
                         .queryParam("url", "https://vimeo.com/20097015")
@@ -63,7 +63,7 @@ class OembedRestControllerTest {
     }
 
     @Test
-    @DisplayName("twitter : oEbmed리소스를 가져온다")
+    @DisplayName("성공 : twitter : oEbmed리소스를 가져온다")
     void getOembedResource_twitter() throws Exception {
         mvc.perform(get("/oembeds")
                         .queryParam("url", "https://twitter.com/hellopolicy/status/867177144815804416")

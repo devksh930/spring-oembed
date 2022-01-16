@@ -30,7 +30,7 @@ class OembedProviderClientTest {
     private static final String OEMBED_PROIVDER_URL = "https://oembed.com/providers.json";
 
     @Test
-    @DisplayName("Oembed프로바이더 정보가 포함된 리스트를 가져온다")
+    @DisplayName("성공 : Oembed프로바이더 정보가 포함된 리스트를 가져온다")
     void getProviderList() {
 
         mockRestServiceServer.expect(requestTo(OEMBED_PROIVDER_URL))

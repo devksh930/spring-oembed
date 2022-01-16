@@ -55,7 +55,7 @@ class OembedServiceTest {
 
 
     @Test
-    @DisplayName("oEmbed리소스를 가져온다")
+    @DisplayName("성공 : oEmbed리소스를 가져온다")
     void getOembedResource() {
         Mockito.when(oembedProviderService.findByUrlPathMatching(inputURL)).then(invocation -> {
             return endpointJson();
@@ -64,12 +64,12 @@ class OembedServiceTest {
             return oembedResource();
         });
 
-        Map<String, Object> oembedResource = oembedService.getOembedResource(inputURL);
+        Map<String, Object> result = oembedService.getOembedResource(inputURL);
 
-        assertEquals(oembedResource.get("author_name"),oembedResource().get("author_name"));
-        assertEquals(oembedResource.get("author_url"),oembedResource().get("author_url"));
-        assertEquals(oembedResource.get("type"),oembedResource().get("type"));
-        assertEquals(oembedResource.get("height"),oembedResource().get("height"));
-        assertEquals(oembedResource.get("provider_url"),oembedResource().get("provider_url"));
+        assertEquals(result.get("author_name"),oembedResource().get("author_name"));
+        assertEquals(result.get("author_url"),oembedResource().get("author_url"));
+        assertEquals(result.get("type"),oembedResource().get("type"));
+        assertEquals(result.get("height"),oembedResource().get("height"));
+        assertEquals(result.get("provider_url"),oembedResource().get("provider_url"));
     }
 }
